@@ -14,6 +14,7 @@ let historyList = [];
 function getDiceFace() {
     let result = Math.floor(Math.random() * 6); // give a number between 0-5
     // console.log(diceRolls[result]);
+    updateBG(result);
     historyList.push(diceRolls[result]); 
     // console.log(historyList)
     return diceRolls[result];
@@ -27,6 +28,11 @@ function updateHistoryList() {
         listItem.innerHTML = `Roll ${i + 1}: <span>${historyList[i]}</span> `;
         rollHistoryEl.appendChild(listItem);
     }
+}
+function updateBG(result){
+    const bodyEl = document.querySelector("body");
+    let colors = ["bisque", "aqua", "greenyellow" , "goldenrod" , "blue" , "blueviolet"];
+    bodyEl.style.backgroundColor = `${colors[result]}`;
 }
 
 buttonEl.addEventListener("click", () => {
